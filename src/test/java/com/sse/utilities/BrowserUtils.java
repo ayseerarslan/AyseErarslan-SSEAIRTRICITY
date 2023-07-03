@@ -5,6 +5,11 @@ package com.sse.utilities;
 
 public class BrowserUtils {
 
+    /**
+     * This method is used for giving average rate based on country name.
+     * @param countryName String
+     * @return integer
+     */
     public static int averageRate(String countryName) {
 
         int rate = 0;
