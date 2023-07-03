@@ -20,8 +20,10 @@ To get started with the Energy Cost Estimator, follow these steps:
 
 4. Run the tests. Use the following command to execute the JUnit tests and verify the project's functionality:
 
-```$ mvn test```
+    for chrome ``` $ mvn test -DBROWSER=chrome```
+   
+    for edge ``` $ mvn test -DBROWSER=edge```
 
-5. Explore the codebase. Take a look at the project structure, classes, and methods to understand how the Energy Cost Estimator works.
+6. Explore the codebase. Take a look at the project structure, classes, and methods to understand how the Energy Cost Estimator works.
 
-6. Use the application. Depending on your requirements, you can integrate the project into your existing application or use it as a standalone tool for estimating energy costs.
+7. Use the application. Depending on your requirements, you can integrate the project into your existing application or use it as a standalone tool for estimating energy costs.
