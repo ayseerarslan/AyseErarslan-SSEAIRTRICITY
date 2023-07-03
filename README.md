@@ -12,7 +12,7 @@ To get started with the Energy Cost Estimator, follow these steps:
 
 1. Clone this repository to your local machine using the following command:
 
-```$ git clone https://github.com/your-username/repository-name.git```
+```$ git clone https://github.com/ayseerarslan/AyseErarslan-SSEAIRTRICITY.git```
 
 2. Install the necessary dependencies. This project requires Java, JUnit, and Selenium. Make sure you have the appropriate versions installed on your machine.
 
