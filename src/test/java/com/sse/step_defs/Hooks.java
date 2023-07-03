@@ -26,7 +26,7 @@ public class Hooks {
         }
 
         System.out.println("--> @After: RUNNING AFTER EACH SCENARIO");
-        //Driver.closeDriver();
+        Driver.closeDriver();
     }
 
 }

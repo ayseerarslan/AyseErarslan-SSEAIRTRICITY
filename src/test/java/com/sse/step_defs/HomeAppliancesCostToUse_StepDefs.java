@@ -6,7 +6,7 @@ import com.sse.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebElement;
+import org.junit.Assert;
 
 public class HomeAppliancesCostToUse_StepDefs {
 
@@ -16,6 +16,9 @@ public class HomeAppliancesCostToUse_StepDefs {
 
     @Given("I am a resident from {string}")
     public void i_am_a_resident_from(String countryName) {
+
+        calculatorPage.selectCountry(countryName);
+
         averageRate = BrowserUtils.averageRate(countryName);
     }
 
@@ -31,25 +34,36 @@ public class HomeAppliancesCostToUse_StepDefs {
 
     @Then("I should get the results table with daily, weekly, monthly, and yearly cost.")
     public void i_should_get_the_results_table_with_daily_weekly_monthly_and_yearly_cost() {
-        var daily = calculatorPage.method("Daily");
-        var weekly = calculatorPage.method("Weekly");
-        var monthly = calculatorPage.method("Monthly");
-        var yearly = calculatorPage.method("Yearly");
+        var daily = calculatorPage.getResultTable("Daily");
+        var weekly = calculatorPage.getResultTable("Weekly");
+        var monthly = calculatorPage.getResultTable("Monthly");
+        var yearly = calculatorPage.getResultTable("Yearly");
 
         System.out.println("\n***************************************");
         for (int i = 0; i < daily.size(); i++) {
-            System.out.println("appliance name\t = \t" + calculatorPage.applianceName(i + 1));
-            System.out.println("daily\t = \t" + daily.get(i).getText());
-            System.out.println("weekly\t = \t" + weekly.get(i).getText());
-            System.out.println("monthly\t = \t" + monthly.get(i).getText());
-            System.out.println("yearly\t = \t" + yearly.get(i).getText());
+            System.out.println("Appliance name\t = \t" + calculatorPage.applianceName(i + 1));
+            System.out.println("Daily\t = \t" + daily.get(i).getText());
+            System.out.println("Weekly\t = \t" + weekly.get(i).getText());
+            System.out.println("Monthly\t = \t" + monthly.get(i).getText());
+            System.out.println("Yearly\t = \t" + yearly.get(i).getText());
             System.out.println("\n***************************************");
 
         }
-
-
     }
 
+    @When("I select This advice applies to {string}")
+    public void iSelectThisAdviceAppliesTo(String countryName) {
 
+        String actual = Driver.getDriver().getTitle();
+        Assert.assertTrue(actual.contains(countryName));
+    }
+
+    @Then("I should get the results message as {string}")
+    public void iShouldGetTheResultsMessageAs(String message) {
+
+        String actual = calculatorPage.NorthernIrelandMessage.getText();
+        Assert.assertTrue(actual.contains(message));
+
+    }
 
 }

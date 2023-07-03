@@ -1,21 +1,15 @@
 package com.sse.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
 
 import java.net.URL;
-import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
@@ -51,9 +45,8 @@ public class Driver {
                     break;
 
                 case "chrome":
-                    ChromeOptions options=new ChromeOptions();
-                    options.addArguments("--remote-allow-origins=*");
-                    driverPool.set(new ChromeDriver(options));
+                    WebDriverManager.chromedriver().setup();
+                    driverPool.set(new ChromeDriver());
                     break;
 
                 case "edge":
@@ -62,9 +55,8 @@ public class Driver {
                     break;
 
             }
-            driverPool.get().manage().window().setSize(new Dimension(1980,1020));
-            //driverPool.get().manage().deleteAllCookies();
-            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driverPool.get().manage().window().maximize();
+            driverPool.get().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         }
 
         return driverPool.get();

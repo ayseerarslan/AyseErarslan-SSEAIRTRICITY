@@ -15,15 +15,14 @@ public class BrowserUtils {
                 break;
 
             case "Scotland":
-                rate = 67;
-                break;
-
             case "Wales":
                 rate = 67;
                 break;
 
             case "Northern Ireland":
-                throw new IllegalArgumentException("The advice on this website doesn't cover Northern Ireland");
+                rate = 0;
+                System.err.println("The advice on this website doesn't cover Northern Ireland");
+                break;
 
             default:
                 throw new IllegalArgumentException("Please enter a valid country name");
